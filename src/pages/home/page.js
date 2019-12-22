@@ -5,7 +5,7 @@ import {
   deleteItem, refetchWeather, $inputValue, addValue
 } from './model'
 import { Header, H1, Text, Spinner, Section, List, ListItem, Button } from '../../ui';
-import { Search } from '../../ui/molecules'
+import { Search } from '../../ui'
 export const HomePage = () => {
   const value = useStore($inputValue)
   const names = useStore($cityNames)
