@@ -6,4 +6,10 @@ export const H1 = styled.h1`
   color: white;
   font-size: 4rem;
   text-align: center;
+  @media (max-width: 768px) {
+    position: relative;
+    left: 5%;
+    top:50%;      
+    font-size: 2rem;
+  }
 `
