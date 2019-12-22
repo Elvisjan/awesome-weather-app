@@ -1,3 +1,3 @@
-import {$cityList} from './model'
+// import {$cityList} from './model'
 
-export const $cityList;
+// export const $cityList;
