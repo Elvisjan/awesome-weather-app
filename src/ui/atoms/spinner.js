@@ -22,6 +22,7 @@ export const Spinner = styled.div`
   @media (max-width: 768px) {
     width: 100%;
     margin-left: 0;
+    background-color: none;
   }
 
     ::after {
