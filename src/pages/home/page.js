@@ -41,8 +41,8 @@ const CityList = () => useList($cityList, ({ name, weather, temperature, cod, fe
   const listItem =
     cod === 200 ? <ListItem>
       В городе {name} в данный момент {weather[0].description}, температура воздуха
-      составляет {temperature} &#176;
-      по цельсию, чувствуется как {feels}&#176;
+      составляет {parseInt(temperature)} &#176;
+      по цельсию, чувствуется как {parseInt(feels)}&#176;
       по цельсию<Button type='button' onClick={() => {
         deleteItem(index)
       }}>Удалить</Button>

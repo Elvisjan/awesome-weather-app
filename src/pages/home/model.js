@@ -42,8 +42,8 @@ export const $cityList = createStore(
         state[state.indexOf(oldValue)] = {...oldValue, temperature: result.main.temp.toFixed(), feels:result.main.feels_like.toFixed(),
         weather: result.weather}      
     } else {
-       state.push({name: params.toUpperCase(), weather: result.weather, temperature: result.main.temp.toFixed(), cod: result.cod, id: result.id,
-       feels: result.main.feels_like.toFixed()})
+       state.push({name: params.toUpperCase(), weather: result.weather, temperature: result.main.temp, cod: result.cod, id: result.id,
+       feels: result.main.feels_like})
     }
     return state
   })
