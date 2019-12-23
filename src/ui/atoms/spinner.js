@@ -19,6 +19,10 @@ export const Spinner = styled.div`
   height: 20px;
   text-align: center;
   border-radius: 5px;
+  @media (max-width: 768px) {
+    width: 75%;
+    margin-left: 0;
+  }
 
     ::after {
       content: " ";

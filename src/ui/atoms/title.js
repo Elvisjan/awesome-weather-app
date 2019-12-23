@@ -7,6 +7,7 @@ export const H1 = styled.h1`
   font-size: 4rem;
   text-align: center;
   @media (max-width: 768px) {
+    width: 80%;
     position: relative;
     left: 5%;
     top:50%;      
