@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/awesome-weather-app/static/js/main.e296c120.chunk.js",
-    "main.js.map": "/awesome-weather-app/static/js/main.e296c120.chunk.js.map",
+    "main.js": "/awesome-weather-app/static/js/main.e7d919fb.chunk.js",
+    "main.js.map": "/awesome-weather-app/static/js/main.e7d919fb.chunk.js.map",
     "runtime-main.js": "/awesome-weather-app/static/js/runtime-main.08faae54.js",
     "runtime-main.js.map": "/awesome-weather-app/static/js/runtime-main.08faae54.js.map",
     "static/js/2.2d85a310.chunk.js": "/awesome-weather-app/static/js/2.2d85a310.chunk.js",
     "static/js/2.2d85a310.chunk.js.map": "/awesome-weather-app/static/js/2.2d85a310.chunk.js.map",
     "index.html": "/awesome-weather-app/index.html",
-    "precache-manifest.9afa06d3b22cb3d5e41f65638d524466.js": "/awesome-weather-app/precache-manifest.9afa06d3b22cb3d5e41f65638d524466.js",
+    "precache-manifest.7c7d837a0ca8eb1a983cde08a309ac57.js": "/awesome-weather-app/precache-manifest.7c7d837a0ca8eb1a983cde08a309ac57.js",
     "service-worker.js": "/awesome-weather-app/service-worker.js",
     "static/js/2.2d85a310.chunk.js.LICENSE": "/awesome-weather-app/static/js/2.2d85a310.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.08faae54.js",
     "static/js/2.2d85a310.chunk.js",
-    "static/js/main.e296c120.chunk.js"
+    "static/js/main.e7d919fb.chunk.js"
   ]
 }
