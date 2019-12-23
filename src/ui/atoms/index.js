@@ -10,5 +10,7 @@ export {Button} from './button';
 export {Spinner} from './spinner';
 export {Body} from './body';
 export {Section} from './section';
+export {Img} from './img';
+
 
 

@@ -4,8 +4,8 @@ import {
   $cityList, $cityNames, fetching,
   deleteItem, refetchWeather, $inputValue, addValue
 } from './model'
-import { Header, H1, Text, Spinner, Section, List, ListItem, Button } from '../../ui';
-import { Search } from '../../ui'
+import { Header, H1, Text, Spinner, Section, List, ListItem, Button, Img, Search } from '../../ui';
+
 export const HomePage = () => {
   const value = useStore($inputValue)
   const names = useStore($cityNames)
@@ -40,10 +40,10 @@ export const HomePage = () => {
 const CityList = () => useList($cityList, ({ name, weather, temperature, cod, feels }, index) => {
   const listItem =
     cod === 200 ? <ListItem>
-      В городе {name} в данный момент {weather[0].description}, температура воздуха
+      В городе {name} в данный момент  {weather[0].description}, температура воздуха
       составляет {parseInt(temperature)} &#176;
       по цельсию, чувствуется как {parseInt(feels)}&#176;
-      по цельсию<Button type='button' onClick={() => {
+      по цельсию <Img alt='погодное условие' width='30px' height='30px' src={`http://openweathermap.org/img/w/${weather[0].icon}.png`}/><Button type='button' onClick={() => {
         deleteItem(index)
       }}>Удалить</Button>
     </ListItem> : null
