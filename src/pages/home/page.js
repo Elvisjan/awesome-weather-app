@@ -43,7 +43,7 @@ const CityList = () => useList($cityList, ({ name, weather, temperature, cod, fe
       В городе {name} в данный момент  {weather[0].description}, температура воздуха
       составляет {parseInt(temperature)} &#176;
       по цельсию, чувствуется как {parseInt(feels)}&#176;
-      по цельсию <Img alt='погодное условие' width='30px' height='30px' src={`http://openweathermap.org/img/w/${weather[0].icon}.png`}/><Button type='button' onClick={() => {
+      по цельсию <Img alt='погодное условие' src={`http://openweathermap.org/img/w/${weather[0].icon}.png`}/><Button type='button' onClick={() => {
         deleteItem(index)
       }}>Удалить</Button>
     </ListItem> : null
