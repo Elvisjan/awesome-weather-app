@@ -20,7 +20,7 @@ export const Spinner = styled.div`
   text-align: center;
   border-radius: 5px;
   @media (max-width: 768px) {
-    width: 75%;
+    width: 100%;
     margin-left: 0;
   }
 
