@@ -1,3 +1,9 @@
 import {HomePage} from './home/page'
 
-export {HomePage}
+export const routes = () => [
+  {  
+    path: "/",
+    exact: true,
+    component: HomePage,
+  }
+]

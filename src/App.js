@@ -1,12 +1,12 @@
 import React from 'react'
 import { Normalize } from "styled-normalize"
-import { HomePage } from './pages';
+import { Routes } from "./routes"
 
 function App() {
   return (
     <>
       <Normalize />
-      <HomePage />
+      <Routes/>
     </>
   )
 }
