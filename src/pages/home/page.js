@@ -8,7 +8,6 @@ import {inputHandler, deleteItem} from '../lib'
 import { Header, H1, Text, Spinner, Section, List, ListItem, Button, Img, Search } from '../../ui';
 
 export const HomePage = () => {
-  const value = useStore($inputValue)
   const names = useStore($cityNames)
   React.useEffect(() => {
     const timer = setInterval(() => {
