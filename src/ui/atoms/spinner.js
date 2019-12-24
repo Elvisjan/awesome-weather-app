@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes } from "styled-components"
 
 const spin = keyframes`
   0% {
@@ -9,7 +9,7 @@ const spin = keyframes`
   }  
 `
 
-export const Spinner = styled.div`  
+export const Spinner = styled.div`
   display: block;
   background-color: green;
   color: #fff;
@@ -25,17 +25,17 @@ export const Spinner = styled.div`
     background-color: none;
   }
 
-    ::after {
-      content: " ";
-      display: block;
-      width: 64px;
-      height: 64px;
-      margin: 8px;
-      margin-top: -30px;
-      margin-left: 300px;
-      border-radius: 50%;
-      border: 6px solid #fff;
-      border-color: yellow transparent yellow transparent;
-      animation: 1.2s ${spin} linear infinite;
-}
+  ::after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    margin-top: -30px;
+    margin-left: 300px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: yellow transparent yellow transparent;
+    animation: 1.2s ${spin} linear infinite;
+  }
 `

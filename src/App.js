@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react"
 import { Normalize } from "styled-normalize"
-import { HomePage } from './pages'
+import { HomePage } from "./pages"
 function App() {
   return (
     <>
@@ -9,4 +9,4 @@ function App() {
     </>
   )
 }
-export default App;
+export default App

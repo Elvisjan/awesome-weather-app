@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 export const Input = styled.input`
   width: 20rem;
@@ -8,10 +8,10 @@ export const Input = styled.input`
   border: none;
   color: black;
   margin-left: 10px;
-  padding-left:18px;
-  ::placeholder {    
+  padding-left: 18px;
+  ::placeholder {
     font-size: 17px;
     width: 100%;
-    color: black;  
+    color: black;
   }
 `

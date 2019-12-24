@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 export const H1 = styled.h1`
   width: 100%;
@@ -10,7 +10,7 @@ export const H1 = styled.h1`
     width: 80%;
     position: relative;
     left: 5%;
-    top:50%;      
+    top: 50%;
     font-size: 2rem;
   }
 `

@@ -1,13 +1,24 @@
-import React from 'react'
+import React from "react"
 
-import { Form, Input, Label } from '../atoms'
+import { Form, Input, Label } from "../atoms"
 
-export const Search = ({ submiter, value, placeholder, type, changer, label }) => {
+export const Search = ({
+  submiter,
+  value,
+  placeholder,
+  type,
+  changer,
+  label,
+}) => {
   return (
     <Form onSubmit={submiter}>
       <Label>{label}</Label>
-      <Input type={type} value={value} placeholder={placeholder} onChange={changer} />
+      <Input
+        type={type}
+        value={value}
+        placeholder={placeholder}
+        onChange={changer}
+      />
     </Form>
   )
 }
-
