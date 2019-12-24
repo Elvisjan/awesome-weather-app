@@ -1,3 +1,3 @@
-import { createEvent } from 'effector'
+import { createEvent } from "effector"
 
-export const deleteItem = createEvent();
+export const deleteItem = createEvent()
