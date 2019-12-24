@@ -1,6 +1,9 @@
+import {sample} from 'effector'
 import {createStore, createEvent, createEffect} from '../../features/common'
+import {deleteItem, triggerSample} from '../lib'
+
 export const addCity = createEvent('add city')
-export const deleteItem = createEvent('delete city')
+export const addValue = createEvent('add input value')
 
 export const fetching = createEffect({
   handler: async (city) => {
@@ -48,8 +51,13 @@ export const $cityList = createStore(
     return state
   })
  $cityList.getState().length < 1 && fetching('МОСКВА')
- export const addValue = createEvent('add input value')
 
  export const $inputValue = createStore("")
    .on(addValue, (_, e)=>  e.currentTarget.value)
    .reset(fetching)
+
+ sample({
+   source: $inputValue,
+   clock: triggerSample,
+   target: fetching
+ })

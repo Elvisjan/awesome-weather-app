@@ -2,8 +2,9 @@ import React from 'react';
 import { useStore, useList, createComponent} from 'effector-react';
 import {
   $cityList, $cityNames, fetching,
-  deleteItem, refetchWeather, $inputValue, addValue
+   refetchWeather, $inputValue, addValue
 } from './model'
+import {inputHandler, deleteItem} from '../lib'
 import { Header, H1, Text, Spinner, Section, List, ListItem, Button, Img, Search } from '../../ui';
 
 export const HomePage = () => {
@@ -11,17 +12,12 @@ export const HomePage = () => {
   const names = useStore($cityNames)
   React.useEffect(() => {
     const timer = setInterval(() => {
-      console.log('This will run after 1 minute!')
       refetchWeather(names)
     }, 60000);
     return () => clearInterval(timer);
   }, [names]);
 
-  const handler = (e) => {
-    e.preventDefault()
-    fetching(value)
-  }
-  return (
+   return (
     <>
       <Header className="App-header">
         <H1>Классное погодное приложение</H1>
@@ -31,7 +27,7 @@ export const HomePage = () => {
         <Search value={useStore($inputValue)} 
         changer={addValue} type='text'
          placeholder='Например: Нижний Новгород'
-          submiter={handler} label='Введите название города' />
+          submiter={inputHandler} label='Введите название города' />
         {useStore($cityList).length > 0 ? <CityList /> : <Text>Добавьте город</Text>}
       </Section>
     </>

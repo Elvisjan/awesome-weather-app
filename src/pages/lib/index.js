@@ -1,3 +1,4 @@
 import {deleteItem} from './deleteitem'
+import {inputHandler, triggerSample} from './inputhandler'
 
-export {deleteItem};
+export {deleteItem, inputHandler, triggerSample};
