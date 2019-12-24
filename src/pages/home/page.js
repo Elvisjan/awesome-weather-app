@@ -1,9 +1,9 @@
 import React from 'react';
-import { useStore, useList, createComponent} from 'effector-react';
+import { useStore, useList, createComponent } from 'effector-react';
 import {
   $cityList, $cityNames, $inputValue, addValue
 } from './model'
-import {inputHandler,fetching , deleteItem, refetchWeather} from '../lib'
+import { inputHandler, fetching, deleteItem, refetchWeather } from '../lib'
 import { Header, H1, Text, Spinner, Section, List, ListItem, Button, Img, Search } from '../../ui';
 
 export const HomePage = () => {
@@ -15,16 +15,16 @@ export const HomePage = () => {
     return () => clearInterval(timer);
   }, [names]);
 
-   return (
+  return (
     <>
       <Header className="App-header">
         <H1>Классное погодное приложение</H1>
         <SpinnerContainer spinner={Spinner}></SpinnerContainer>
       </Header>
       <Section>
-        <Search value={useStore($inputValue)} 
-        changer={addValue} type='text'
-         placeholder='Например: Нижний Новгород'
+        <Search value={useStore($inputValue)}
+          changer={addValue} type='text'
+          placeholder='Например: Нижний Новгород'
           submiter={inputHandler} label='Введите название города' />
         {useStore($cityList).length > 0 ? <CityList /> : <Text>Добавьте город</Text>}
       </Section>
@@ -37,7 +37,7 @@ const CityList = () => useList($cityList, ({ name, weather, temperature, cod, fe
       В городе {name} в данный момент  {weather[0].description}, температура воздуха
       составляет {parseInt(temperature)} &#176;
       по цельсию, чувствуется как {parseInt(feels)}&#176;
-      по цельсию <Img alt='погодное условие' src={`http://openweathermap.org/img/w/${weather[0].icon}.png`}/><Button type='button' onClick={() => {
+      по цельсию <Img alt='погодное условие' src={`http://openweathermap.org/img/w/${weather[0].icon}.png`} /><Button type='button' onClick={() => {
         deleteItem(index)
       }}>Удалить</Button>
     </ListItem> : null

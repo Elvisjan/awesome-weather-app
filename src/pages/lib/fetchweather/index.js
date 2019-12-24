@@ -1,4 +1,4 @@
-import {createEffect} from 'effector'
+import { createEffect } from 'effector'
 
 export const fetching = createEffect({
   handler: async (city) => {

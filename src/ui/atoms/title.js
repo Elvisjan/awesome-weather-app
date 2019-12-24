@@ -1,5 +1,5 @@
 import styled from 'styled-components'
- 
+
 export const H1 = styled.h1`
   width: 100%;
   height: 30%;

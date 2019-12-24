@@ -1,3 +1,3 @@
-import {createStore, createEvent} from 'effector'
-import {fetching} from '../cities/model'
+import { createStore, createEvent } from 'effector'
+import { fetching } from '../cities/model'
 
