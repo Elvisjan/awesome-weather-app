@@ -1,10 +1,9 @@
 import React from 'react';
 import { useStore, useList, createComponent} from 'effector-react';
 import {
-  $cityList, $cityNames, fetching,
-   refetchWeather, $inputValue, addValue
+  $cityList, $cityNames, $inputValue, addValue
 } from './model'
-import {inputHandler, deleteItem} from '../lib'
+import {inputHandler,fetching , deleteItem, refetchWeather} from '../lib'
 import { Header, H1, Text, Spinner, Section, List, ListItem, Button, Img, Search } from '../../ui';
 
 export const HomePage = () => {

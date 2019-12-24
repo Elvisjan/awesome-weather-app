@@ -1,24 +1,10 @@
 import {sample} from 'effector'
-import {createStore, createEvent, createEffect} from '../../features/common'
-import {deleteItem, triggerSample} from '../lib'
+import {createStore, createEvent} from '../../features/common'
+import {deleteItem,fetching ,triggerSample} from '../lib'
 
 export const addCity = createEvent('add city')
 export const addValue = createEvent('add input value')
 
-export const fetching = createEffect({
-  handler: async (city) => {
-    const url = `https://api.openweathermap.org/data/2.5/weather?APPID=a82f5bd7cf235d2d97cf411fd97a845d&units=metric&lang=ru&q=${city}`
-    const req = await fetch(url)
-    return req.json()
-  },
-})
-export const refetchWeather = createEffect({
-    handler: async (store) => {
-      for (let st of store) {
-       await fetching(st)
-      }
-   }
-  }) 
 export const $cityNames = createStore(["Москва"], {name: 'cityNames'})
   .on(fetching.done, (state, {result, params}) => {
     if (result.cod === 200) {
