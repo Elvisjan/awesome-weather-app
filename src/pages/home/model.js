@@ -9,7 +9,7 @@ export const $cityNames = createStore(["Москва"], {name: 'cityNames'})
   .on(fetching.done, (state, {result, params}) => {
     if (result.cod === 200) {
       state =[...state]
-    const oldValue =state.find(item=> item.toLowerCase() === params.toLowerCase())
+    const oldValue = state.find(item=> item.toLowerCase() === params.toLowerCase())
     if (oldValue) return       
     else {
         state.push(params)
