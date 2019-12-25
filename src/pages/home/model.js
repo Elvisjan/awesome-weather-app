@@ -1,11 +1,13 @@
-import { sample } from "effector"
-import { createStore, createEvent } from "../../features/common"
+import { sample, createStore, createEvent } from "effector"
 import { deleteItem, fetching, triggerSample } from "../lib"
 
 export const addCity = createEvent("add city")
 export const addValue = createEvent("add input value")
 
-export const $cityNames = createStore(["Москва"], { name: "cityNames" })
+export const $cityNames = createStore(
+  JSON.parse(localStorage.getItem("cityNames")),
+  { name: "cityNames" }
+)
   .on(fetching.done, (state, { result, params }) => {
     if (result.cod === 200) {
       state = [...state]
@@ -21,7 +23,10 @@ export const $cityNames = createStore(["Москва"], { name: "cityNames" })
   })
   .on(deleteItem, (state, index) => state.filter((_, i) => i !== index))
 
-export const $cityList = createStore([], { name: "cityList" })
+export const $cityList = createStore(
+  JSON.parse(localStorage.getItem("cityList")),
+  { name: "cityList" }
+)
   .on(deleteItem, (state, index) => state.filter((_, i) => i !== index))
   .on(fetching.done, (state, { result, params }) => {
     state = [...state]
@@ -47,6 +52,14 @@ export const $cityList = createStore([], { name: "cityList" })
     }
     return state
   })
+$cityNames.updates.watch((newState) =>
+  localStorage.setItem($cityNames.shortName, JSON.stringify(newState))
+)
+
+$cityList.updates.watch((newState) =>
+  localStorage.setItem($cityList.shortName, JSON.stringify(newState))
+)
+
 $cityList.getState().length < 1 && fetching("МОСКВА")
 
 export const $inputValue = createStore("")
