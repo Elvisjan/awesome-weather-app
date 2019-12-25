@@ -1,5 +1,5 @@
 import { sample, createStore, createEvent } from "effector"
-import { deleteItem, fetching, triggerSample } from "../../lib"
+import { deleteItem, fetching, triggerSample, refetchWeather } from "../../lib"
 export const addCity = createEvent("add city")
 export const addValue = createEvent("add input value")
 
@@ -64,6 +64,8 @@ $cityList.updates.watch((newState) =>
 )
 
 $cityList.getState().length < 1 && fetching("МОСКВА")
+
+refetchWeather($cityNames.getState())
 
 sample({
   source: $inputValue,
