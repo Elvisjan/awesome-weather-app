@@ -18,11 +18,13 @@ import {
 export const HomePage = () => {
   const names = useStore($cityNames)
   React.useEffect(() => {
+    refetchWeather(names)
+    console.log("hello")
     const timer = setInterval(() => {
       refetchWeather(names)
     }, 60000)
     return () => clearInterval(timer)
-  }, [names])
+  }, [])
 
   return (
     <>

@@ -1,6 +1,5 @@
 import { sample, createStore, createEvent } from "effector"
 import { deleteItem, fetching, triggerSample } from "../../lib"
-
 export const addCity = createEvent("add city")
 export const addValue = createEvent("add input value")
 
