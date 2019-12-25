@@ -1,5 +1,5 @@
 import { sample, createStore, createEvent } from "effector"
-import { deleteItem, fetching, triggerSample } from "../lib"
+import { deleteItem, fetching, triggerSample } from "../../lib"
 
 export const addCity = createEvent("add city")
 export const addValue = createEvent("add input value")
@@ -36,8 +36,8 @@ export const $cityList = createStore(
     if (oldValue) {
       state[state.indexOf(oldValue)] = {
         ...oldValue,
-        temperature: result.main.temp.toFixed(),
-        feels: result.main.feels_like.toFixed(),
+        temperature: result.main.temp,
+        feels: result.main.feels_like,
         weather: result.weather,
       }
     } else {
@@ -52,19 +52,19 @@ export const $cityList = createStore(
     }
     return state
   })
+
+export const $inputValue = createStore("")
+  .on(addValue, (_, e) => e.currentTarget.value)
+  .reset(fetching)
+
 $cityNames.updates.watch((newState) =>
   localStorage.setItem($cityNames.shortName, JSON.stringify(newState))
 )
-
 $cityList.updates.watch((newState) =>
   localStorage.setItem($cityList.shortName, JSON.stringify(newState))
 )
 
 $cityList.getState().length < 1 && fetching("МОСКВА")
-
-export const $inputValue = createStore("")
-  .on(addValue, (_, e) => e.currentTarget.value)
-  .reset(fetching)
 
 sample({
   source: $inputValue,

@@ -1,6 +1,6 @@
 import { deleteItem } from "./deleteitem"
-import { fetching } from "./fetchweather"
+import { fetching } from "./fetching"
 import { inputHandler, triggerSample } from "./inputhandler"
-import { refetchWeather } from "./refetchweather"
+import { refetchWeather } from "./refetching"
 
 export { deleteItem, fetching, inputHandler, triggerSample, refetchWeather }
