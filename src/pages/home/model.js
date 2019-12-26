@@ -63,8 +63,7 @@ $cityList.updates.watch((newState) =>
   localStorage.setItem($cityList.shortName, JSON.stringify(newState))
 )
 
-fetching("МОСКВА")
-
+$cityList.getState().length < 1 && fetching("МОСКВА")
 refetchWeather($cityNames.getState())
 
 sample({
