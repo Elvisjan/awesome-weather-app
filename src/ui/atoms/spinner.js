@@ -10,32 +10,33 @@ const spin = keyframes`
 `
 
 export const Spinner = styled.div`
-  display: block;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 0%;
   background-color: green;
   color: #fff;
-  margin-left: 355px;
   font-size: 16px;
   width: 280px;
   height: 20px;
   text-align: center;
   border-radius: 5px;
-  @media (max-width: 768px) {
-    width: 100%;
-    margin-left: 0;
-    background-color: none;
-  }
-
   ::after {
     content: " ";
     display: block;
-    width: 64px;
-    height: 64px;
-    margin: 8px;
-    margin-top: -30px;
-    margin-left: 300px;
+    position: absolute;
+    left: 75%;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     border: 6px solid #fff;
     border-color: yellow transparent yellow transparent;
     animation: 1.2s ${spin} linear infinite;
+  }
+  @media (max-width: 768px) {
+    top: 10%;
+    left: 0;
+    width: 100%;
+    background-color: none;
   }
 `
