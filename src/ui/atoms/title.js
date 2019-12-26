@@ -9,8 +9,9 @@ export const H1 = styled.h1`
   @media (max-width: 768px) {
     width: 80%;
     position: relative;
-    left: 5%;
+    left: 50%;
     top: 50%;
+    transform: translate(-50%, -50%);
     font-size: 2rem;
   }
 `
