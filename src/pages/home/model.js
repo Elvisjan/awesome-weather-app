@@ -64,7 +64,7 @@ $cityList.updates.watch((newState) =>
 )
 
 $cityList.getState().length < 1 && fetching("МОСКВА")
-refetchWeather($cityNames.getState())
+$cityNames.getState().length > 0 && refetchWeather($cityNames.getState())
 
 sample({
   source: $inputValue,
