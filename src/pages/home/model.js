@@ -4,7 +4,7 @@ export const addCity = createEvent("add city")
 export const addValue = createEvent("add input value")
 
 export const $cityNames = createStore(
-  JSON.parse(localStorage.getItem("cityNames")),
+  JSON.parse(localStorage.getItem("cityNames")) || [],
   { name: "cityNames" }
 )
   .on(fetching.done, (state, { result, params }) => {
@@ -23,7 +23,7 @@ export const $cityNames = createStore(
   .on(deleteItem, (state, index) => state.filter((_, i) => i !== index))
 
 export const $cityList = createStore(
-  JSON.parse(localStorage.getItem("cityList")),
+  JSON.parse(localStorage.getItem("cityList")) || [],
   { name: "cityList" }
 )
   .on(deleteItem, (state, index) => state.filter((_, i) => i !== index))
@@ -63,9 +63,9 @@ $cityList.updates.watch((newState) =>
   localStorage.setItem($cityList.shortName, JSON.stringify(newState))
 )
 
-$cityList.getState().length < 1 && fetching("МОСКВА")
+fetching("МОСКВА")
 
-$cityNames.getState().length && refetchWeather($cityNames.getState())
+refetchWeather($cityNames.getState())
 
 sample({
   source: $inputValue,
