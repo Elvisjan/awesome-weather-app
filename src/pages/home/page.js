@@ -1,7 +1,13 @@
 import React from "react"
 import { useStore, useList, createComponent } from "effector-react"
-import { $cityList, $cityNames, $inputValue, addValue } from "./model"
-import { inputHandler, fetching, deleteItem, refetchWeather } from "../../lib"
+import {
+  $cityList,
+  $cityNames,
+  $inputValue,
+  addValue,
+  deleteItem,
+} from "./model"
+import { inputHandler, fetching, refetchWeather } from "../../lib"
 import {
   Header,
   H1,

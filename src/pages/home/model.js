@@ -1,7 +1,8 @@
 import { sample, createStore, createEvent } from "effector"
-import { deleteItem, fetching, triggerSample, refetchWeather } from "../../lib"
+import { fetching, triggerSample, refetchWeather } from "../../lib"
 export const addCity = createEvent("add city")
 export const addValue = createEvent("add input value")
+export const deleteItem = createEvent("delete item")
 
 export const $cityNames = createStore(
   JSON.parse(localStorage.getItem("cityNames")) || [],
