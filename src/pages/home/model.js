@@ -1,5 +1,5 @@
-import { sample, createStore, createEvent } from "effector"
-import { fetching, triggerSample, refetchWeather } from "../../lib"
+import { sample, createStore, createEvent, guard } from "effector"
+import { fetching, triggerSample, refetchWeather } from "../../features"
 export const addCity = createEvent("add city")
 export const addValue = createEvent("add input value")
 export const deleteItem = createEvent("delete item")
@@ -63,10 +63,18 @@ $cityNames.updates.watch((newState) =>
 $cityList.updates.watch((newState) =>
   localStorage.setItem($cityList.shortName, JSON.stringify(newState))
 )
-
 $cityList.getState().length < 1 && fetching("МОСКВА")
 $cityNames.getState().length > 0 && refetchWeather($cityNames.getState())
-
+// guard({
+//   source: $cityNames,
+//   filter: $cityNames.length > 1,
+//   clock: fetching('Москва')
+// })
+// guard({
+//   source: $cityNames,
+//   filter: name => name.length > 0,
+//   clock: refetchWeather($cityNames.getState())
+// })
 sample({
   source: $inputValue,
   clock: triggerSample,

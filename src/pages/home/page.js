@@ -7,7 +7,7 @@ import {
   addValue,
   deleteItem,
 } from "./model"
-import { inputHandler, fetching, refetchWeather } from "../../lib"
+import { inputHandler, fetching, refetchWeather } from "../../features"
 import {
   Header,
   H1,
