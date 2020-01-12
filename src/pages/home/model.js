@@ -1,4 +1,4 @@
-import { sample, createStore, createEvent, guard } from "effector"
+import { sample, createStore, createEvent } from "effector"
 import { fetching, triggerSample, refetchWeather } from "../../features"
 export const addCity = createEvent("add city")
 export const addValue = createEvent("add input value")
