@@ -61,7 +61,7 @@ const CityList = () =>
         <ListItem>
           В городе {name} в данный момент {weather[0].description}, температура
           воздуха составляет {parseInt(temperature)} &#176; по цельсию,
-          чувствуется как {parseInt(feels)}&#176; по цельсию{" "}
+          чувствуется как {parseInt(feels)}&#176; по цельсию
           <Img
             alt="погодное условие"
             src={`http://openweathermap.org/img/w/${weather[0].icon}.png`}
