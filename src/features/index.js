@@ -1,5 +1,5 @@
 import { fetching } from "./fetching"
 import { inputHandler, triggerSample } from "./inputhandler"
-import { refetchWeather } from "./refetching"
+import { weatherUpdate } from "./refetching"
 
-export { fetching, inputHandler, triggerSample, refetchWeather }
+export { fetching, inputHandler, triggerSample, weatherUpdate }

@@ -1,48 +1,33 @@
 import { sample, createStore, createEvent } from "effector"
-import { fetching, triggerSample, refetchWeather } from "../../features"
+import { fetching, triggerSample, weatherUpdate } from "../../features"
 export const addCity = createEvent("add city")
 export const addValue = createEvent("add input value")
 export const deleteItem = createEvent("delete item")
 
-export const $cityNames = createStore(
-  JSON.parse(localStorage.getItem("cityNames")) || [],
-  { name: "cityNames" }
+export const $ids = createStore(
+  JSON.parse(localStorage.getItem("cityIds")) || [],
+  { name: "cityIds" }
 )
-  .on(fetching.done, (state, { result, params }) => {
-    if (result.cod === 200) {
-      state = [...state]
-      const oldValue = state.find(
-        (item) => item.toLowerCase() === params.toLowerCase()
-      )
-      if (oldValue) return
-      else {
-        state.push(params)
-      }
+  .on(fetching.done, (state, { result }) => {
+    if (result.cod !== 200 || state.find((id) => id === result.id)) {
       return state
-    } else return
+    }
+    state = [...state, result.id]
+    return state
   })
   .on(deleteItem, (state, index) => state.filter((_, i) => i !== index))
-
 export const $cityList = createStore(
   JSON.parse(localStorage.getItem("cityList")) || [],
   { name: "cityList" }
 )
-  .on(deleteItem, (state, index) => state.filter((_, i) => i !== index))
-  .on(fetching.done, (state, { result, params }) => {
+  .on(fetching.done, (state, { result }) => {
     state = [...state]
-    const oldValue = state.find(
-      (item) => item.name.toLowerCase() === params.toLowerCase()
-    )
+    const oldValue = state.find((item) => item.id === result.id)
     if (oldValue) {
-      state[state.indexOf(oldValue)] = {
-        ...oldValue,
-        temperature: result.main.temp,
-        feels: result.main.feels_like,
-        weather: result.weather,
-      }
+      return state
     } else {
       state.push({
-        name: params.toUpperCase(),
+        name: result.name,
         weather: result.weather,
         temperature: result.main.temp,
         cod: result.cod,
@@ -52,19 +37,35 @@ export const $cityList = createStore(
     }
     return state
   })
+  .on(weatherUpdate.done, (state, { result }) => {
+    state = [...state]
+    for (let ent of result.list) {
+      let oldValue = state.find((item) => item.id === ent.id)
+      if (oldValue) {
+        state[state.indexOf(oldValue)] = {
+          ...oldValue,
+          temperature: ent.main.temp,
+          feels: ent.main.feels_like,
+          weather: ent.weather,
+        }
+      }
+    }
+    return state
+  })
+  .on(deleteItem, (state, index) => state.filter((_, i) => i !== index))
 
 export const $inputValue = createStore("")
   .on(addValue, (_, e) => e.currentTarget.value)
   .reset(fetching)
 
-$cityNames.updates.watch((newState) =>
-  localStorage.setItem($cityNames.shortName, JSON.stringify(newState))
+$ids.updates.watch((newState) =>
+  localStorage.setItem($ids.shortName, JSON.stringify(newState))
 )
 $cityList.updates.watch((newState) =>
   localStorage.setItem($cityList.shortName, JSON.stringify(newState))
 )
 $cityList.getState().length < 1 && fetching("МОСКВА")
-$cityNames.getState().length > 0 && refetchWeather($cityNames.getState())
+$ids.getState().length > 0 && weatherUpdate($ids.getState())
 // guard({
 //   source: $cityNames,
 //   filter: $cityNames.length > 1,

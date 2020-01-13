@@ -1,10 +1,9 @@
 import { createEffect } from "effector"
-import { fetching } from "../fetching"
 
-export const refetchWeather = createEffect({
-  handler: async (store, handler) => {
-    for (let st of store) {
-      await fetching(st)
-    }
+export const weatherUpdate = createEffect({
+  handler: async (ids) => {
+    const url = `https://api.openweathermap.org/data/2.5/group?id=${ids}&units=metric&appid=a82f5bd7cf235d2d97cf411fd97a845d&lang=ru`
+    const req = await fetch(url)
+    return req.json()
   },
 })

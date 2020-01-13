@@ -1,13 +1,7 @@
 import React from "react"
 import { useStore, useList, createComponent } from "effector-react"
-import {
-  $cityList,
-  $cityNames,
-  $inputValue,
-  addValue,
-  deleteItem,
-} from "./model"
-import { inputHandler, fetching, refetchWeather } from "../../features"
+import { $cityList, $inputValue, addValue, deleteItem, $ids } from "./model"
+import { inputHandler, fetching, weatherUpdate } from "../../features"
 import {
   Header,
   H1,
@@ -22,13 +16,13 @@ import {
 } from "../../ui"
 
 export const HomePage = () => {
-  const names = useStore($cityNames)
+  const ids = useStore($ids)
   React.useEffect(() => {
     const timer = setInterval(() => {
-      refetchWeather(names)
+      weatherUpdate(ids)
     }, 60000)
     return () => clearInterval(timer)
-  }, [names])
+  }, [ids])
 
   return (
     <>
