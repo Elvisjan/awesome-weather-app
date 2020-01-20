@@ -67,15 +67,16 @@ $cityList.updates.watch((newState) =>
 $cityList.getState().length < 1 && fetching("МОСКВА")
 $ids.getState().length > 0 && weatherUpdate($ids.getState())
 // guard({
-//   source: $cityNames,
-//   filter: $cityNames.length > 1,
-//   clock: fetching('Москва')
+//   source: $cityList,
+//   filter: store => store.length < 1,
+//   target: fetching('Москва')
 // })
 // guard({
 //   source: $cityNames,
 //   filter: name => name.length > 0,
-//   clock: refetchWeather($cityNames.getState())
+//   target: refetchWeather
 // })
+
 sample({
   source: $inputValue,
   clock: triggerSample,

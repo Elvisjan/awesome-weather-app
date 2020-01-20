@@ -1,17 +1,18 @@
 import React from "react"
 
-import { Form, Input, Label } from "../atoms"
+import { Form, Input, Label, Button } from "../atoms"
 
 export const Search = ({
-  submiter,
+  submitter,
   value,
   placeholder,
   type,
   changer,
   label,
+  buttonText,
 }) => {
   return (
-    <Form onSubmit={submiter}>
+    <Form onSubmit={submitter}>
       <Label>{label}</Label>
       <Input
         type={type}
@@ -19,6 +20,7 @@ export const Search = ({
         placeholder={placeholder}
         onChange={changer}
       />
+      <Button onClick={submitter}>{buttonText}</Button>
     </Form>
   )
 }

@@ -36,8 +36,9 @@ export const HomePage = () => {
           changer={addValue}
           type="text"
           placeholder="Например: Нижний Новгород"
-          submiter={inputHandler}
+          submitter={inputHandler}
           label="Введите название города"
+          buttonText="добавить город"
         />
         {useStore($cityList).length > 0 ? (
           <CityList />
