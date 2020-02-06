@@ -1,4 +1,4 @@
-import { sample, createStore, createEvent } from "effector"
+import { sample, createStore, createEvent, guard } from "effector"
 import { fetching, triggerSample, weatherUpdate } from "../../features"
 export const addCity = createEvent("add city")
 export const addValue = createEvent("add input value")
@@ -64,18 +64,19 @@ $ids.updates.watch((newState) =>
 $cityList.updates.watch((newState) =>
   localStorage.setItem($cityList.shortName, JSON.stringify(newState))
 )
-$cityList.getState().length < 1 && fetching("МОСКВА")
-$ids.getState().length > 0 && weatherUpdate($ids.getState())
-// guard({
-//   source: $cityList,
-//   filter: store => store.length < 1,
-//   target: fetching('Москва')
-// })
-// guard({
-//   source: $cityNames,
-//   filter: name => name.length > 0,
-//   target: refetchWeather
-// })
+//$cityList.getState().length < 1 && fetching("МОСКВА")
+guard({
+  source: $cityList,
+  filter: (store) => !store[0],
+  target: fetching.prepend(() => "Москва"),
+})
+//$ids.getState().length > 0 && weatherUpdate($ids.getState())
+
+guard({
+  source: $ids,
+  filter: (name) => name.length > 0,
+  target: weatherUpdate.prepend(() => $ids),
+})
 
 sample({
   source: $inputValue,
