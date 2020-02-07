@@ -64,12 +64,12 @@ $ids.updates.watch((newState) =>
 $cityList.updates.watch((newState) =>
   localStorage.setItem($cityList.shortName, JSON.stringify(newState))
 )
-//$cityList.getState().length < 1 && fetching("МОСКВА")
-guard({
-  source: $cityList,
-  filter: (store) => !store[0],
-  target: fetching.prepend(() => "Москва"),
-})
+$cityList.getState().length < 1 && fetching("МОСКВА")
+// guard({
+//   source: $cityList,
+//   filter: (store) => !store[0],
+//   target: fetching.prepend(() => "Москва"),
+// })
 //$ids.getState().length > 0 && weatherUpdate($ids.getState())
 
 guard({
