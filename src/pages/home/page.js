@@ -1,6 +1,13 @@
 import React from "react"
 import { useStore, useList, createComponent } from "effector-react"
-import { $cityList, $inputValue, addValue, deleteItem, $ids } from "./model"
+import {
+  $cityList,
+  $inputValue,
+  addValue,
+  deleteItem,
+  $ids,
+  mount,
+} from "./model"
 import { inputHandler, fetching, weatherUpdate } from "../../features"
 import {
   Header,
@@ -17,6 +24,10 @@ import {
 
 export const HomePage = () => {
   const ids = useStore($ids)
+  const inputValue = useStore($inputValue)
+  React.useEffect(() => {
+    mount()
+  }, [])
   React.useEffect(() => {
     const timer = setInterval(() => {
       weatherUpdate(ids)
@@ -32,7 +43,7 @@ export const HomePage = () => {
       </Header>
       <Section>
         <Search
-          value={useStore($inputValue)}
+          value={inputValue}
           changer={addValue}
           type="text"
           placeholder="Например: Нижний Новгород"

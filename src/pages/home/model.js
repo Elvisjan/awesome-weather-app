@@ -3,6 +3,7 @@ import { fetching, triggerSample, weatherUpdate } from "../../features"
 export const addCity = createEvent("add city")
 export const addValue = createEvent("add input value")
 export const deleteItem = createEvent("delete item")
+export const mount = createEvent("initial mount")
 
 export const $ids = createStore(
   JSON.parse(localStorage.getItem("cityIds")) || [],
@@ -70,14 +71,11 @@ $cityList.getState().length < 1 && fetching("МОСКВА")
 //   filter: (store) => !store[0],
 //   target: fetching.prepend(() => "Москва"),
 // })
-//$ids.getState().length > 0 && weatherUpdate($ids.getState())
-
-guard({
+sample({
   source: $ids,
-  filter: (name) => name.length > 0,
-  target: weatherUpdate.prepend(() => $ids),
+  clock: mount,
+  target: weatherUpdate,
 })
-
 sample({
   source: $inputValue,
   clock: triggerSample,
