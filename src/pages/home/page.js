@@ -7,6 +7,7 @@ import {
   deleteItem,
   $ids,
   mount,
+  unmount,
 } from "./model"
 import { inputHandler, fetching, weatherUpdate } from "../../features"
 import {
